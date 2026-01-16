@@ -82,3 +82,38 @@ void display()
     }
     f.close();
 }
+void book(){
+  int flag=0;
+    char bsno[10];
+    cout<<"ENter seat number to Book.\n";
+    fflush(stdin);gets(bsno);
+    f.open("seat.dat",ios::binary|ios::in|ios::out);
+    while(f.read((char *)&s1,sizeof(s1)))
+    {
+        int tell=f.tellp();
+
+        if(strcmp(bsno,s1.seat)==0)
+        {
+            flag++;
+            if(strcmp(s1.statuss,"A")==0)
+            {
+                c.input(bsno);
+                fout.open("user.dat",ios::binary|ios::app);
+                fout.write((char *)&c,sizeof(c));
+                fout.close();
+                strcpy(s1.statuss,"B");
+                f.seekp(tell-sizeof(s1));
+                f.write((char *)&s1,sizeof(s1));
+                cout<<endl<<"Booked Successfully.\n";
+                break;
+            }
+        }
+    }
+    f.close();
+    if(flag==0)
+    {
+        cout<<"Invalid Seat Number.\n";
+    }
+}
+
+
