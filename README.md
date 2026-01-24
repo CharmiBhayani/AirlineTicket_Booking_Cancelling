@@ -76,18 +76,18 @@ cancel()
 
 9. MENU STRUCTURE
 ***** MENU *****
-1. Booking
-2. Canceling
-3. Exit
-Option 1: Booking
-•	Displays seat layout
-•	Takes seat number and customer details
-•	Confirms booking
-Option 2: Canceling
-•	Displays seat layout
-•	Cancels booking using seat number
-Option 3: Exit
-•	Terminates the program
+      1. Booking
+      2. Canceling
+      3. Exit
+      Option 1: Booking
+      •	Displays seat layout
+      •	Takes seat number and customer details
+      •	Confirms booking
+      Option 2: Canceling
+      •	Displays seat layout
+      •	Cancels booking using seat number
+      Option 3: Exit
+      •	Terminates the program
 
 10. HOW TO EXECUTE THE PROGRAM
 Compilation
