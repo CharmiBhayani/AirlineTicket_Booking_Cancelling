@@ -79,6 +79,7 @@ cancel()
       1. Booking
       2. Canceling
       3. Exit
+
       Option 1: Booking
       •	Displays seat layout
       •	Takes seat number and customer details
