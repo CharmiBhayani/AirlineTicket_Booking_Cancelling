@@ -115,5 +115,73 @@ void book(){
         cout<<"Invalid Seat Number.\n";
     }
 }
+fstream ff;
+void cancel()
+{
+    char csno[10];
+    int flag1=0,flag2=0;
+    cout<<"Enter the seat number to Cancel booking.\n";
+    fflush(stdin);
+    gets(csno);
+    f.open("user.dat",ios::binary|ios::in);
+    fout.open("new.dat",ios::binary|ios::app);
+    while(f.read((char *)&c,sizeof(c)))
+    {
+        if(strcmp(csno,c.seatno)==0 )
+        {
+
+                cout<<"Ticket canceled successfully.\n";
+                ff.open("seat.dat",ios::binary|ios::in|ios::out);
+                while(ff.read((char *)&s1,sizeof(s1)))
+                {
+
+                     int tell=ff.tellp();
+                    if(strcmp(s1.seat,csno)==0)
+                    {
+                        strcpy(s1.statuss,"A");
+                        ff.seekp(tell-sizeof(s1));
+                        ff.write((char *)&s1,sizeof(s1));
+                        break;
+                    }
+
+                }
+                ff.close();
+            }
+
+        else
+        {
+            fout.write((char *)&c,sizeof(c));
+        }
+    }
+    f.close();
+    fout.close();
+    remove("user.dat");
+    rename("new.dat","user.dat");
+
+}
+int main()
+{
+    int ch;
+    set_seat();
+    while(1)
+    {
+    cout<<"*****MENU*****\n";
+    cout<<"1.Booking\n2.Canceling\n3.exit\n";
+    cout<<"Enter your choice: ";cin>>ch;
+    system("cls");
+    switch(ch)
+    {
+        case 1:
+           display();book();break;
+        case 2:
+            display();cancel();break;
+        case 3:exit(0);
+        default:
+            cout<<"Invalid choice.\n";
+    }
+    }
+    return 0;
+}
+
 
 
